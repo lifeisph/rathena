@@ -1514,6 +1514,9 @@ int npc_cashshop_buylist(struct map_session_data *sd, int points, int count, uns
 			item_tmp.nameid = nameid;
 			item_tmp.identify = 1;
 
+			if (points > 0) // Bind item to character if bought with at least one free cash.
+				item_tmp.bound = BOUND_CHAR;
+
 			if ((itemdb_search(nameid))->flag.guid)
 				get_amt = 1;
 
